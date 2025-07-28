@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ master ]  # Changed from 'main' to 'master'
+    branches: [ enhanced-features ]  # Changed from 'main' to 'master'
   workflow_dispatch:  # Allows manual triggering
 
 permissions:
