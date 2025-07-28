@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Calendar, Play, Users, Zap, Shield } from 'lucide-react';
+import DemoModal from './DemoModal';
 
 const CTA = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+
   const benefits = [
     {
       icon: Zap,
@@ -66,7 +70,10 @@ const CTA = () => {
 
         {/* Main CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-          <button className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-200 font-semibold flex items-center justify-center group shadow-xl hover:shadow-2xl">
+          <button 
+            onClick={() => setIsDemoModalOpen(true)}
+            className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-200 font-semibold flex items-center justify-center group shadow-xl hover:shadow-2xl"
+          >
             <Calendar className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
             Request Demo
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -77,8 +84,11 @@ const CTA = () => {
             Watch Platform Demo
           </button>
           
-          <button className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 font-semibold flex items-center justify-center group shadow-xl hover:shadow-2xl">
-            Start Free Trial
+          <button 
+            onClick={() => setIsConsultationModalOpen(true)}
+            className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 font-semibold flex items-center justify-center group shadow-xl hover:shadow-2xl"
+          >
+            Book Consultation
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -152,6 +162,18 @@ const CTA = () => {
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <DemoModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)} 
+        type="demo"
+      />
+      <DemoModal 
+        isOpen={isConsultationModalOpen} 
+        onClose={() => setIsConsultationModalOpen(false)} 
+        type="consultation"
+      />
     </section>
   );
 };

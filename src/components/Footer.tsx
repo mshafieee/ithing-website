@@ -1,10 +1,13 @@
 import React from 'react';
-import { Zap, Mail, Phone, MapPin, Github, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { Zap, Mail, Phone, MapPin, Github, Twitter, Linkedin, Youtube, Globe } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [
     { name: 'Platform', href: '#features' },
     { name: 'Protocols', href: '#protocols' },
+    { name: 'Agriculture', href: '#agriculture' },
+    { name: 'Weather & Water', href: '#weather-water' },
+    { name: 'Sensor Demo', href: '#sensor-demo' },
     { name: 'AI Optimization', href: '#ai-optimization' },
     { name: 'Demo', href: '#demo' },
     { name: 'Pricing', href: '#comparison' },
@@ -38,11 +41,30 @@ const Footer = () => {
     'Support'
   ];
 
+  const regions = [
+    {
+      country: 'Saudi Arabia',
+      cities: ['Mecca', 'Medina', 'Riyadh', 'Jeddah', 'Dammam', 'Neom']
+    },
+    {
+      country: 'UAE',
+      cities: ['Dubai', 'Abu Dhabi', 'Sharjah']
+    },
+    {
+      country: 'Qatar',
+      cities: ['Doha', 'Al Rayyan']
+    },
+    {
+      country: 'Egypt',
+      cities: ['Cairo', 'Alexandria']
+    }
+  ];
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16 grid lg:grid-cols-5 md:grid-cols-2 gap-8">
+        <div className="py-16 grid lg:grid-cols-6 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
@@ -61,15 +83,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
                 <Mail className="h-4 w-4 mr-3 text-blue-400" />
-                <span>hello@ithing.io</span>
+                <span>info@ithing.io</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone className="h-4 w-4 mr-3 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>+201096701701</span>
               </div>
-              <div className="flex items-start text-gray-300">
-                <MapPin className="h-4 w-4 mr-3 mt-1 text-blue-400" />
-                <span>123 Innovation Drive<br />San Francisco, CA 94105</span>
+              <div className="flex items-center text-gray-300">
+                <Phone className="h-4 w-4 mr-3 text-blue-400" />
+                <span>+0966562077165</span>
               </div>
             </div>
           </div>
@@ -80,7 +102,7 @@ const Footer = () => {
               Platform
             </h4>
             <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
+              {quickLinks.slice(0, 6).map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
@@ -99,7 +121,7 @@ const Footer = () => {
               Solutions
             </h4>
             <ul className="space-y-3">
-              {solutions.map((solution, index) => (
+              {solutions.slice(0, 6).map((solution, index) => (
                 <li key={index}>
                   <a
                     href="#"
@@ -112,39 +134,26 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources & Company */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-6">
-              Resources
+          {/* Service Regions */}
+          <div className="lg:col-span-2">
+            <h4 className="text-lg font-bold text-white mb-6 flex items-center">
+              <Globe className="h-5 w-5 mr-2 text-blue-400" />
+              Service Regions
             </h4>
-            <ul className="space-y-3 mb-8">
-              {resources.slice(0, 3).map((resource, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
-                  >
-                    {resource}
-                  </a>
-                </li>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {regions.map((region, index) => (
+                <div key={index} className="bg-gray-800 rounded-lg p-4">
+                  <h5 className="font-semibold text-white mb-2">{region.country}</h5>
+                  <ul className="space-y-1">
+                    {region.cities.map((city, cityIndex) => (
+                      <li key={cityIndex} className="text-gray-300 text-sm">
+                        • {city}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
-            
-            <h4 className="text-lg font-bold text-white mb-6">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {company.slice(0, 3).map((item, index) => (
-                <li key={index}>
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            </div>
           </div>
         </div>
 

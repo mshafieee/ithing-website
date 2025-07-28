@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { Menu, X, Zap, LogIn, UserPlus } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import LoginModal from './LoginModal';
+import DemoModal from './DemoModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const navItems = [
     { name: 'Platform', href: '#features' },
     { name: 'Protocols', href: '#protocols' },
+    { name: 'Agriculture', href: '#agriculture' },
+    { name: 'Weather & Water', href: '#weather-water' },
+    { name: 'Sensor Demo', href: '#sensor-demo' },
     { name: 'AI Optimization', href: '#ai-optimization' },
     { name: 'Demo', href: '#demo' },
     { name: 'Pricing', href: '#comparison' },
@@ -43,11 +50,17 @@ const Header = () => {
           {/* Actions */}
           <div className="hidden lg:flex items-center space-x-4">
             <ThemeToggle />
-            <button className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+            <button 
+              onClick={() => setIsLoginModalOpen(true)}
+              className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
               <LogIn className="h-4 w-4" />
               <span>Login</span>
             </button>
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium flex items-center space-x-2">
+            <button 
+              onClick={() => setIsDemoModalOpen(true)}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium flex items-center space-x-2"
+            >
               <UserPlus className="h-4 w-4" />
               <span>Request Demo</span>
             </button>
@@ -84,11 +97,23 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <button className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 w-fit">
+                <button 
+                  onClick={() => {
+                    setIsLoginModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center space-x-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 w-fit"
+                >
                   <LogIn className="h-4 w-4" />
                   <span>Login</span>
                 </button>
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium flex items-center space-x-2 w-fit">
+                <button 
+                  onClick={() => {
+                    setIsDemoModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium flex items-center space-x-2 w-fit"
+                >
                   <UserPlus className="h-4 w-4" />
                   <span>Request Demo</span>
                 </button>
@@ -97,6 +122,17 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      {/* Modals */}
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
+      <DemoModal 
+        isOpen={isDemoModalOpen} 
+        onClose={() => setIsDemoModalOpen(false)} 
+        type="demo"
+      />
     </header>
   );
 };

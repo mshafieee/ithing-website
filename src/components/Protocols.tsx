@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wifi, Radio, Bluetooth, Zap, Network, Cpu } from 'lucide-react';
+import { Wifi, Radio, Bluetooth, Zap, Network, Cpu, MessageSquare, Globe } from 'lucide-react';
 
 const Protocols = () => {
   const protocols = [
@@ -11,6 +11,24 @@ const Protocols = () => {
       power: 'Ultra-low',
       devices: '10K+ nodes',
       color: 'green'
+    },
+    {
+      icon: MessageSquare,
+      name: 'MQTT',
+      description: 'Lightweight messaging protocol for IoT communication',
+      range: 'Global',
+      power: 'Very low',
+      devices: '25K+ clients',
+      color: 'orange'
+    },
+    {
+      icon: Globe,
+      name: 'TCP/IP',
+      description: 'Internet protocol suite for reliable data transmission',
+      range: 'Global',
+      power: 'Medium',
+      devices: '50K+ endpoints',
+      color: 'teal'
     },
     {
       icon: Zap,
@@ -66,7 +84,9 @@ const Protocols = () => {
       purple: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
       indigo: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400',
       yellow: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400',
-      red: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
+      red: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
+      orange: 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400',
+      teal: 'bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
     };
     return colors[color] || colors.blue;
   };

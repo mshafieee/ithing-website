@@ -3,6 +3,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Protocols from './components/Protocols';
+import AgricultureIoT from './components/AgricultureIoT';
+import WeatherWaterQuality from './components/WeatherWaterQuality';
+import SensorPlacementDemo from './components/SensorPlacementDemo';
 import AIOptimization from './components/AIOptimization';
 import InteractiveDemo from './components/InteractiveDemo';
 import Testimonials from './components/Testimonials';
@@ -18,6 +21,9 @@ function App() {
       <Hero />
       <Features />
       <Protocols />
+      <AgricultureIoT />
+      <WeatherWaterQuality />
+      <SensorPlacementDemo />
       <AIOptimization />
       <InteractiveDemo />
       <Testimonials />
